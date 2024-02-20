@@ -6,4 +6,4 @@ then
   exit
 fi
 
-echo "Yay! Everything works!
+echo "Yay! Everything works!"
