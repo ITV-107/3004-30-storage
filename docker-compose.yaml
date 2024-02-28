@@ -1,0 +1,50 @@
+---
+
+version: '3'
+ 
+services:
+  server1:
+     build: ./web_server
+     environment:
+       - SERVER_NAME=server1
+     networks:
+       - set_exercise_bridge
+    
+  server2:
+     build: ./web_server
+     environment:
+       - SERVER_NAME=server2
+     networks:
+       - set_exercise_bridge
+    
+  server3:
+     build: ./web_server
+     environment:
+       - SERVER_NAME=server3
+     networks:
+       - set_exercise_bridge
+    
+  server4:
+     build: ./web_server     
+     environment:
+       - SERVER_NAME=server4
+     networks:
+       - set_exercise_bridge
+  
+  web_balancer: 
+     image: nginx:alpine
+     restart: always
+     ports:
+       - "8080:80"    
+     networks:
+       - set_exercise_bridge
+     volumes:
+       - ./web_balancer/nginx.conf:/etc/nginx/nginx.conf
+     depends_on:
+       - server1
+       - server2
+       - server3
+       - server4
+
+networks:
+  set_exercise_bridge:
