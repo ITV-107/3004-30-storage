@@ -19,3 +19,4 @@ docker pull php:fpm
 
 # Run docker compose with the following scripts.
 docker-compose up -d
+
