@@ -6,8 +6,6 @@ then
   exit
 fi
 
-echo "Successful import."
-
 # Install docker and docker compose.
 apt-get install -y docker.io docker-compose
 
@@ -17,6 +15,7 @@ docker pull nginx:alpine
 # Pull the base image for backend web server.
 docker pull php:fpm
 
-# Run docker compose with the following scripts.
+# Run docker compose using the YAML in the root directory.
 docker-compose up -d
+
 
