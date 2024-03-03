@@ -4,34 +4,31 @@ version: '3'
 services:
   server1:
      build: ./web_server
-     environment:
-       - SERVER_NAME=server1
+     restart: always
      networks:
        - set_exercise_bridge
-    
+
   server2:
      build: ./web_server
-     environment:
-       - SERVER_NAME=server2
+     restart: always
      networks:
        - set_exercise_bridge
-    
+
   server3:
-     build: ./web_server    
-     environment:
-       - SERVER_NAME=server3
+     build: ./web_server
+     restart: always
      networks:
        - set_exercise_bridge
-    
+
   server4:
-     build: ./web_server    
-     environment:
-       - SERVER_NAME=server4
+     build: ./web_server
+     restart: always
      networks:
        - set_exercise_bridge
-  
+            
   web_balancer: 
      build: ./web_balancer
+     restart: always
      ports:
        - "8081:80"    
      networks:

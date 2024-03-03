@@ -1,8 +1,11 @@
-# We're using a custom php image
+# We're serving dynamic web content, so use PHP FPM as a backend 
 FROM php:fpm
 
-# Copy the hit-counter script to the web script
+# Copy the hit-counter script to the container
 COPY . /web
 
-# Run CHOWN to change the data to the user
+# use chown to grant write permissions to the script
+# otherwise the script-caller cannot add the current hits to
+# the web file.
 RUN chown -R www-data /web/hits
+

@@ -9,6 +9,9 @@ fi
 # Install docker and docker compose.
 apt-get install -y docker.io docker-compose
 
+# Enable the use of the uninstallation script.
+chmod +x ./uninstall.sh
+
 # Pull the base image for load balancer
 docker pull nginx:alpine
 
@@ -16,6 +19,8 @@ docker pull nginx:alpine
 docker pull php:fpm
 
 # Run docker compose using the YAML in the root directory.
-docker-compose up -d
+# This regularly updates the images as well.
+docker-compose up -d --build
+
 
 
